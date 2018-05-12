@@ -1,12 +1,12 @@
 import BaseType from "./baseType";
-import Validation from "../framework/validation";
+import Validator from "../framework/Validator";
 
 export default class StringType extends BaseType{
     constructor(validators){
         super('string', [
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be of type 'string'`,
-                validator: value => typeof(value) === "string"
+                validationMethod: value => typeof(value) === "string"
             })
         ]);
     }
@@ -14,18 +14,18 @@ export default class StringType extends BaseType{
 
     minLength = (min) => {
         return this.addValidator(
-            new Validation({
+            new Validator({
                 message: value => `Expected the length of ${value} to be greater than or equal to ${min}`,
-                validator: value => value.length >= min
+                validationMethod: value => value.length >= min
             })
         );
     }
 
     maxLength = (max) => {
         return this.addValidator(
-            new Validation({
+            new Validator({
                 message: value => `Expected the length of ${value} to be less than or equal to ${max}`,
-                validator: value => value.length <= max
+                validationMethod: value => value.length <= max
             })
         );
     }
@@ -36,9 +36,9 @@ export default class StringType extends BaseType{
             : x=>x.includes(pattern);
 
         return this.addValidator(
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to match the regular expression pattern ${pattern}`,
-                validator: value => testMethod(value)
+                validationMethod: value => testMethod(value)
             })
         );
     }

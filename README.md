@@ -1,4 +1,4 @@
-# JSON Schema Validator
+# JSON Schema Validation
 
 ## Work In Progress. Probably shouldn't be used yet.
 
@@ -9,4 +9,4 @@ Types are based on the [json-schema-core identification of six primitive types](
 
 
 # Validation
-Properties for each type that are validated are based on the [json-schema-validation validation keywords](http://json-schema.org/latest/json-schema-validation.html). Verbage for each property has been changed from those presented in the json-schema-validation document to improve the developer experience when using this tool.
+Properties for each type that are validated are based on the [json-schema-Validation Validation keywords](http://json-schema.org/latest/json-schema-Validation.html). Verbage for each property has been changed from those presented in the json-schema-Validation document to improve the developer experience when using this tool.

@@ -1,5 +1,5 @@
 {
-    "name": "json-schema-validator",
+    "name": "json-schema-validation",
     "version": "0.0.1",
     "description": "Library that provides utilities for validating data",
     "license": "UNLICENSED",
@@ -7,6 +7,7 @@
     "scripts": {
         "compile": "babel src --out-dir lib",
         "test": "jest",
+        "testCoverage": "jest --coverage",
         "build-docs": "jsdoc -r src -d docs"
     },
     "devDependencies": {
@@ -37,6 +38,9 @@
     "jest": {
         "collectCoverageFrom": [
             "src/**/*.{js,jsx}"
+        ],
+        "coveragePathIgnorePatterns":[
+            "index.js"
         ],
         "testMatch": [
             "<rootDir>/tests/**/?(*.)(spec|test).{js,jsx}"

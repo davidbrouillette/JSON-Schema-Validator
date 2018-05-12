@@ -1,12 +1,12 @@
 import BaseType from "./baseType";
-import Validation from "../framework/validation";
+import Validator from "../framework/Validator";
 
 export default class ObjectType extends BaseType{
     constructor(validators){
         super('object', [
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be of type 'object'`,
-                validator: value => Object.prototype.toString.call(value) === "[object Object]"
+                validationMethod: value => Object.prototype.toString.call(value) === "[object Object]"
             })
         ]);
     }

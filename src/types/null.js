@@ -1,12 +1,12 @@
 import BaseType from "./baseType";
-import Validation from "../framework/validation";
+import Validator from "../framework/Validator";
 
 export default class NullType extends BaseType{
     constructor(validators){
         super('null', [
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be of type 'null'`,
-                validator: value => value === null
+                validationMethod: value => value === null
             })
         ]);
     }

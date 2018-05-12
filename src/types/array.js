@@ -1,16 +1,15 @@
 import BaseType from "./baseType";
-import Validation from "../framework/validation";
+import Validator from "../framework/Validator";
 
-export default class ArrayType extends BaseType{
-    constructor(validators){
-        super('array', [
-            new Validation({
-                message: value => `Expected ${value} to be of type 'array'`,
-                validator: value => Array.isArray(value)
+export default class ArrayType extends BaseType {
+    constructor(validators) {
+        super("array", [
+            new Validator({
+                message: (value) => `Expected ${value} to be of type 'array'`,
+                validationMethod: (value) => Array.isArray(value)
             })
         ]);
     }
-
 
     // items
 
@@ -23,5 +22,4 @@ export default class ArrayType extends BaseType{
     // uniqueItems
 
     // contains
-
 }

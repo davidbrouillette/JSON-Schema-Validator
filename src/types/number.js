@@ -1,57 +1,57 @@
 import BaseType from "./baseType";
-import Validation from "../framework/validation";
+import Validator from "../framework/Validator";
 
 export default class NumberType extends BaseType{
     constructor(validators){
         super('number', [
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be of type 'number'`,
-                validator: value => typeof(value) === "number"
+                validationMethod: value => typeof(value) === "number"
             })
         ]);
     }
 
     minValue = (minVal) => {
         return this.addValidator(
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be greater than or equal to ${minVal}`,
-                validator: value => value >= minVal
+                validationMethod: value => value >= minVal
             })
         );
     }
 
     maxValue = (maxVal) => {
         return this.addValidator(
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be less than or equal to ${maxVal}`,
-                validator: value => value <= maxVal
+                validationMethod: value => value <= maxVal
             })
         );
     }
 
     greaterThan = (boundary) => {
         return this.addValidator(
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be greater than to ${boundary}`,
-                validator: value => value > boundary
+                validationMethod: value => value > boundary
             })
         );
     }
 
     lessThan = (boundary) => {
         return this.addValidator(
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be less than to ${boundary}`,
-                validator: value => value < boundary
+                validationMethod: value => value < boundary
             })
         );
     }
 
     multipleOf = (base) => {
         return this.addValidator(
-            new Validation({
+            new Validator({
                 message: value => `Expected ${value} to be a multiple of ${base}`,
-                validator: value => value % base === 0
+                validationMethod: value => value % base === 0
             })
         )
     }
