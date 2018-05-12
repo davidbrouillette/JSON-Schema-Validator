@@ -1,0 +1,56 @@
+{
+    "name": "json-schema-validator",
+    "version": "0.0.1",
+    "description": "Library that provides utilities for validating data",
+    "license": "UNLICENSED",
+    "main": "src/index.js",
+    "scripts": {
+        "compile": "babel src --out-dir lib",
+        "test": "jest",
+        "build-docs": "jsdoc -r src -d docs"
+    },
+    "devDependencies": {
+        "babel-core": "^7.0.0-0",
+        "@babel/cli": "7.0.0-beta.46",
+        "@babel/core": "7.0.0-beta.46",
+        "@babel/runtime": "7.0.0-beta.46",
+        "@babel/preset-env": "7.0.0-beta.46",
+        "@babel/preset-flow": "7.0.0-beta.46",
+        "@babel/preset-stage-3": "7.0.0-beta.46",
+        "@babel/preset-stage-2": "7.0.0-beta.46",
+        "@babel/plugin-proposal-decorators": "7.0.0-beta.46",
+        "@babel/plugin-proposal-nullish-coalescing-operator": "7.0.0-beta.46",
+        "@babel/plugin-proposal-optional-chaining": "7.0.0-beta.46",
+        "@babel/plugin-syntax-decorators": "7.0.0-beta.46",
+        "@babel/plugin-syntax-flow": "7.0.0-beta.46",
+        "@babel/plugin-syntax-nullish-coalescing-operator": "7.0.0-beta.46",
+        "@babel/plugin-syntax-optional-chaining": "7.0.0-beta.46",
+        "babel-eslint": "8.2.3",
+        "babel-jest": "22.4.3",
+        "chalk": "2.4.1",
+        "eslint": "4.19.1",
+        "eslint-plugin-flowtype": "2.46.3",
+        "eslint-plugin-import": "2.11.0",
+        "fs-extra": "6.0.0",
+        "jest": "22.4.3"
+    },
+    "jest": {
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx}"
+        ],
+        "testMatch": [
+            "<rootDir>/tests/**/?(*.)(spec|test).{js,jsx}"
+        ],
+        "testEnvironment": "node",
+        "testURL": "http://localhost",
+        "transform": {
+            "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest"
+        },
+        "transformIgnorePatterns": [
+            "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+        ],
+        "moduleFileExtensions": [
+            "js"
+        ]
+    }
+}
