@@ -1,4 +1,6 @@
-# Validation Library
+# JSON Schema Validator
+
+## Work In Progress. Probably shouldn't be used yet.
 
 
 # Types
