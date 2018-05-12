@@ -31,12 +31,24 @@ export default class StringType extends BaseType{
     }
 
     matchesPattern = (pattern) => {
+        let testMethod = this.isRegEx(pattern)
+            ? x=>pattern.test(x)
+            : x=>x.includes(pattern);
+
         return this.addValidator(
             new Validation({
                 message: value => `Expected ${value} to match the regular expression pattern ${pattern}`,
-                validator: (value) => { let re = new RegExp(pattern); return re.test(value); }
+                validator: value => testMethod(value)
             })
         );
+    }
+
+    isRegEx = (value) => {
+        return Object.prototype.toString.call(value) === '[object RegExp]';
+    }
+
+    isString = (value) => {
+        return typeof(value) === 'string';
     }
 
 }
