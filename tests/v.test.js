@@ -96,4 +96,28 @@ describe("V tests", ()=> {
         let result = obj.validate(7);
         expect(result).toBeFalsy();
     });
+
+    it("V.array & value=['1','2'] validates as correct", ()=>{
+        let obj = V.array;
+        let result = obj.validate([1,2]);
+        expect(result).toBeTruthy();
+    });
+
+    it("V.null & value=null validates as correct", ()=>{
+        let obj = V.null;
+        let result = obj.validate(null);
+        expect(result).toBeTruthy();
+    });
+
+    it("V.object & value={'a':1,'b':2} validates as correct", ()=>{
+        let obj = V.object;
+        let result = obj.validate({'a':1,'b':2});
+        expect(result).toBeTruthy();
+    });
+
+    it("V.string & value='test' validates as correct", ()=>{
+        let obj = V.string;
+        let result = obj.validate('test');
+        expect(result).toBeTruthy();
+    });
 });
