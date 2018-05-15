@@ -1,7 +1,7 @@
 import Validator from "../framework/validator";
 import IfConditionalSchema from "../framework/ifConditionalSchema";
 
-export default class TypeBase {
+export default class BaseType {
     constructor(type = "any", validators = []) {
         this.id = Symbol("id");
         this.validators = [...validators];

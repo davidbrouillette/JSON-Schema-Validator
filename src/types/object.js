@@ -11,12 +11,42 @@ export default class ObjectType extends BaseType{
         ]);
     }
 
-    // maxProperties
+   // minProperties
+    minProperties = (minVal) => {
+        return this.addValidator(
+            new Validator({
+                message: obj => `Expected object to have greater than or equal to ${minVal} properties`,
+                validationMethod: obj => Object.keys(obj).length >= minVal
+            })
+        );
+    }
 
-    // minProperties
+    // maxProperties
+    maxProperties = (maxVal) => {
+        return this.addValidator(
+            new Validator({
+                message: obj => `Expected object to have less than or equal to ${maxVal} properties`,
+                validationMethod: obj => Object.keys(obj).length <= maxVal
+            })
+        );
+    }
 
     // required
-
+    required = (requiredProps) => {
+        return this.addValidator(
+            new Validator({
+                message: obj => `Expected object to the following properties: ${requiredProps}`,
+                validationMethod: (obj) => {
+                    for(let prop of requiredProps ){
+                        if(!obj.hasOwnProperty(prop)){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            })
+        );
+    }
     // properties
 
     // patternProperties
