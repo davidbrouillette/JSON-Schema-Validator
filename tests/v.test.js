@@ -73,4 +73,27 @@ describe("V tests", ()=> {
         expect(result).toBeTruthy();
     });
 
+    if("V with conditionals validates 'then' as correct", ()=>{
+        let obj = V.number.lessThan(10).if(x=>x<1).then.isConstant(0);
+        let result = obj.validate(0);
+        expect(result).toBeTruthy();
+    });
+
+    if("V with conditionals validates 'then' as error", ()=>{
+        let obj = V.number.lessThan(10).if(x=>x<1).then.isConstant(0);
+        let result = obj.validate(-3);
+        expect(result).toBeFalsy();
+    });
+
+    if("V with conditionals validates 'else' as correct", ()=>{
+        let obj = V.number.lessThan(10).if(x=>x<1).then.isConstant(0).else.isIn([1,2,3,4]);
+        let result = obj.validate(4);
+        expect(result).toBeTruthy();
+    });
+
+    if("V with conditionals validates 'else' as error", ()=>{
+        let obj = V.number.lessThan(10).if(x=>x<1).then.isConstant(0).else.isIn([1,2,3,4]);
+        let result = obj.validate(7);
+        expect(result).toBeFalsy();
+    });
 });

@@ -11,6 +11,15 @@ export default class NumberType extends BaseType{
         ]);
     }
 
+    get isInteger() {
+        return this.addValidator(
+            new Validator({
+                message: value => `Expected ${value} to be an integer`,
+                validationMethod: value => Number.isInteger(value)
+            })
+        );
+    }
+
     minValue = (minVal) => {
         return this.addValidator(
             new Validator({
@@ -20,6 +29,10 @@ export default class NumberType extends BaseType{
         );
     }
 
+    minimum = (minVal) => {
+        return this.minValue(minVal);
+    }    
+
     maxValue = (maxVal) => {
         return this.addValidator(
             new Validator({
@@ -27,6 +40,10 @@ export default class NumberType extends BaseType{
                 validationMethod: value => value <= maxVal
             })
         );
+    }
+    
+    maximum = (maxVal) => {
+        return this.maxValue(maxVal);
     }
 
     greaterThan = (boundary) => {
@@ -37,6 +54,10 @@ export default class NumberType extends BaseType{
             })
         );
     }
+    
+    exclusiveMinimum = (boundary) => {
+        return this.greaterThan(boundary);
+    }
 
     lessThan = (boundary) => {
         return this.addValidator(
@@ -45,6 +66,10 @@ export default class NumberType extends BaseType{
                 validationMethod: value => value < boundary
             })
         );
+    }
+
+    exclusiveMaximum = (boundary) => {
+        return this.lessThan(boundary);
     }
 
     multipleOf = (base) => {

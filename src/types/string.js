@@ -43,6 +43,11 @@ export default class StringType extends BaseType{
         );
     }
 
+    pattern = (pattern) => {
+        return this.matchesPattern(pattern);
+    }
+
+
     isRegEx = (value) => {
         return Object.prototype.toString.call(value) === '[object RegExp]';
     }
@@ -50,5 +55,25 @@ export default class StringType extends BaseType{
     isString = (value) => {
         return typeof(value) === 'string';
     }
+
+
+    // format = (format) =>{
+    //     return this.withFormat(format);
+    // }
+
+    /**
+     * 'date-time'
+     * 'email'
+     * 'hostname'
+     * 'ipv4'
+     * 'ipv6'
+     * 'uri'
+     */
+    // withFormat = (format) => {
+    //     return this.addValidator({
+    //         message: value => `Expected ${value} to be in ${format} format.`,
+    //         validationMethod: value => true
+    //     });
+    // }
 
 }

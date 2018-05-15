@@ -80,4 +80,11 @@ describe("StringType tests", () => {
         let result = obj.runValidators("tired");
         expect(result).toBeFalsy();
     });
+
+    it("pattern(/([A-Z])/) & value='Testing' validates as correct", () => {
+        let obj = new StringType();
+        obj.pattern(/([A-Z])/);
+        let result = obj.runValidators("Testing");
+        expect(result).toBeTruthy();
+    });
 });

@@ -39,7 +39,7 @@
         "collectCoverageFrom": [
             "src/**/*.{js,jsx}"
         ],
-        "coveragePathIgnorePatterns":[
+        "coveragePathIgnorePatterns": [
             "index.js"
         ],
         "testMatch": [
