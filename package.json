@@ -7,8 +7,10 @@
     "scripts": {
         "compile": "babel src --out-dir lib",
         "test": "jest",
-        "testCoverage": "jest --coverage",
-        "build-docs": "jsdoc -r src -d docs"
+        "test-coverage": "jest --coverage",
+        "build-docs": "jsdoc -r src -d docs",
+        "preexamples": "npm run compile",
+        "examples": "node ./examples/examples.js"
     },
     "devDependencies": {
         "babel-core": "^7.0.0-0",
