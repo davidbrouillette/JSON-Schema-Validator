@@ -1,5 +1,5 @@
 {
-    "name": "json-schema-validation",
+    "name": "@nwea/json-schema-validation",
     "version": "0.0.1",
     "description": "Library that provides utilities for validating data",
     "license": "UNLICENSED",

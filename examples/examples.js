@@ -1,5 +1,6 @@
 const chalk = require("chalk");
 const { V } = require("../lib");
+const exampleSchemaJson = require("./example.schema.json");
 
 function OutputResult(fn, input, result){
     let fnO = chalk.cyan(`${fn.padEnd(35)}: `);
@@ -11,6 +12,16 @@ function OutputResult(fn, input, result){
     console.log(fnO + inputO + resultO) ;
 }
 
+function Example_Object(input){
+    let inputValidation = V.object.properties({
+        numberProp: V.number,
+        stringMinLength2: V.string.minLength(2)
+    }).maxProperties(2);
+
+    let result = inputValidation.validate(input);
+
+    OutputResult('Example_Object', input, result);
+}
 
 function Example_IsOfTypeNumber(input){
     let inputValidation = V.number;
@@ -37,6 +48,15 @@ function Example_IsNumberConditional(input, location){
     let result = inputValidation.validate(input);
     OutputResult(`Example_IsNumberConditional (${location})`, input, result);
 }
+
+function Example_Schema(input){
+    let inputValidation = V.schema(exampleSchemaJson);
+
+    let result = inputValidation.validate(input);
+
+    OutputResult("Example_Schema", input, result);
+}
+
 
 // true
 Example_IsOfTypeNumber(123);
@@ -67,3 +87,32 @@ Example_IsNumberConditional(7, "else");
 
 // false
 Example_IsNumberConditional(5.39, "else");
+
+// true
+Example_Object({numberProp: 5, stringMinLength2: "testString"});
+
+// false
+Example_Object({numberProp: "a", stringMinLength2: "t"});
+
+// true
+Example_Object({numberProp: 5, stringMinLength2: "testString", "anExtraProperty":"test"});
+
+// true
+Example_Schema({
+    "description": "descriptionHere",
+    "displayOrder": 4,
+    "displayValue": "thisisDisplayValue",
+    "fixedValueId": 234,
+    "metadataDefinitionId": 3002565,
+    "systemValue": "thisisSystemValue"
+});
+
+// false
+Example_Schema({
+    "description": "descriptionHere",
+    "displayOrder": 4,
+    "displayValue": "thisisDisplayValue",
+    "fixedValueId": 234,
+    "metadataDefinitionId": 3002565,
+    "systemValue": 234
+});

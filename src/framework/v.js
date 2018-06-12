@@ -8,6 +8,8 @@ import {
     StringType
 } from "../types";
 
+import Schema from "./schema";
+
 const V = {
     get array (){
         return new ArrayType();
@@ -26,6 +28,9 @@ const V = {
     },
     get string (){
         return new StringType();
+    },
+    schema: (jsonSchema) => {
+        return new Schema(jsonSchema);
     }
 
 }

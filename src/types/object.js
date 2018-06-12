@@ -47,7 +47,27 @@ export default class ObjectType extends BaseType{
             })
         );
     }
+
     // properties
+    properties = (props) => {
+        return this.addValidator(
+            new Validator({
+                message: obj => `Expected object to have the correct props: ${Object.keys(props)}`,
+                validationMethod: (obj) =>{
+                    let isValid = true;
+                    let propsToValidate = Object.keys(props);
+                    
+                    for(let prop of propsToValidate){
+                        if(!props[prop].validate(obj[prop])){
+                            isValid = false;
+                        }
+                    }
+
+                    return isValid;
+                }
+            })
+        )
+    }
 
     // patternProperties
 

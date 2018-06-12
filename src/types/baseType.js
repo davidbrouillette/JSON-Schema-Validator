@@ -36,7 +36,6 @@ export default class BaseType {
             
             validatorsToRun.forEach((v, index, arr) => {
                 let result = v.validationMethod(value);
-
                 if (!result) {
                     isValid = false;
                     this.errors.push(v.message(value));

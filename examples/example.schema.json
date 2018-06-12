@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "title":"Fixed Value Schema",
+    "description": "A representation of a Fixed Value",
+    "id":"metadata.fixedvalue",
+    "type": "object",
+    "required": [
+        "displayOrder",
+        "displayValue",
+        "fixedValueId",
+        "metadataDefinitionId",
+        "systemValue"
+    ],
+    "properties": {
+        "description":{
+            "description": "Description of the fixed value",
+            "type":"string"
+        },
+        "displayOrder":{
+            "description": "The order in which this value should display in context of other fixed values",
+            "type":"number"
+        },
+        "displayValue":{
+            "description": "The value of the fixed value as seen in UIs",
+            "type":"string"
+        },
+        "fixedValueId":{
+            "description":"The unique ID of the fixed value",
+            "type":"number"
+        },
+        "metadataDefinitionId":{
+            "description":"The ID of the metadataDefinition this fixed value is associated with",
+            "type":"number"
+        },
+        "systemValue":{
+            "description": "The value of the fixed Value as seen by NWEA systems",
+            "type":"string"
+        }
+    }
+}
