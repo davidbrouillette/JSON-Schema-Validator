@@ -1,6 +1,7 @@
 
 import {
     IfConditionalSchema,
+    Schema,
     V,
     Validator
 } from "./framework";
@@ -17,6 +18,7 @@ import {
 
 export {
     IfConditionalSchema,
+    Schema,
     V,
     Validator,
     ArrayType,
